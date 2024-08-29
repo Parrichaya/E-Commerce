@@ -42,7 +42,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   function AdminProducts() {
     axios
-      .get('http://13.236.146.218:5500/admin/products', { headers: { "Authorization": localStorage.getItem("token") } })
+      .get('http://13.236.146.218:5002/admin/products', { headers: { "Authorization": localStorage.getItem("token") } })
       .then(response => {
         console.log('Admin products fetched:', response.data);
         const products = response.data.products;
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function Products() {
     // Fetch and display products
     axios
-      .get('http://13.236.146.218:5500/shop/products', { headers: { "Authorization": localStorage.getItem("token") } })
+      .get('http://13.236.146.218:5002/shop/products', { headers: { "Authorization": localStorage.getItem("token") } })
       .then(response => {
         const products = response.data.products;
         const productList = document.getElementById('product-list');
@@ -100,7 +100,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function Cart() {
     // Fetch and display cart items
     axios
-      .get('http://13.236.146.218:5500/shop/cart', { headers: { "Authorization": localStorage.getItem("token") } })
+      .get('http://13.236.146.218:5002/shop/cart', { headers: { "Authorization": localStorage.getItem("token") } })
       .then(response => {
         const products = response.data.products;
         const cartList = document.getElementById('cart-list');
@@ -128,7 +128,7 @@ document.addEventListener('DOMContentLoaded', function() {
   function Orders() {
     // Fetch and display orders
     axios
-      .get('http://13.236.146.218:5500/shop/orders', { headers: { "Authorization": localStorage.getItem("token") } })
+      .get('http://13.236.146.218:5002/shop/orders', { headers: { "Authorization": localStorage.getItem("token") } })
       .then(response => {
         const orders = response.data.orders;
         const ordersList = document.getElementById('orders-list');
@@ -156,7 +156,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const title = document.getElementById('title').value;
     const price = document.getElementById('price').value;
     const description = document.getElementById('description').value;
-    axios.post("http://13.236.146.218:5500/admin/add-product", { title, price, description }, { headers: { "Authorization": localStorage.getItem("token") } })
+    axios.post("http://13.236.146.218:5002/admin/add-product", { title, price, description }, { headers: { "Authorization": localStorage.getItem("token") } })
       .then(response => {
         alert('Product added successfully');
         document.getElementById('add-product-form').reset();
@@ -173,7 +173,7 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Delete button clicked');
         const prodId = event.target.getAttribute('data-id');
         console.log('Product ID:', prodId);
-        axios.post('http://13.236.146.218:5500/admin/delete-product', 
+        axios.post('http://13.236.146.218:5002/admin/delete-product', 
           { productId: prodId },
           { headers: { "Authorization": localStorage.getItem("token") } })
           .then(response => {
@@ -188,7 +188,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('admin-product-list').addEventListener('click', function(event) {
       if (event.target.classList.contains('edit')) {
         const prodId = event.target.getAttribute('data-id');
-        axios.get(`http://13.236.146.218:5500/admin/edit-product/${prodId}`, { headers: { "Authorization": localStorage.getItem("token") } })
+        axios.get(`http://13.236.146.218:5002/admin/edit-product/${prodId}`, { headers: { "Authorization": localStorage.getItem("token") } })
           .then(response => {
             const product = response.data.product;
             document.getElementById('edit-product-id').value = product.id;
@@ -208,7 +208,7 @@ document.addEventListener('DOMContentLoaded', function() {
       const title = document.getElementById('edit-title').value;
       const price = document.getElementById('edit-price').value;
       const description = document.getElementById('edit-description').value;
-      axios.post(`http://13.236.146.218:5500/admin/edit-product`, 
+      axios.post(`http://13.236.146.218:5002/admin/edit-product`, 
       { productId: prodId, title: title, price: price, description: description },
       { headers: { "Authorization": localStorage.getItem("token") } })
         .then(response => {
@@ -224,7 +224,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('product-list').addEventListener('click', function(event) {
       if (event.target.classList.contains('add-to-cart')) {
         const prodId = event.target.getAttribute('data-id');
-        axios.post('http://13.236.146.218:5500/shop/cart', { productId: prodId }, { headers: { "Authorization": localStorage.getItem("token") } })
+        axios.post('http://13.236.146.218:5002/shop/cart', { productId: prodId }, { headers: { "Authorization": localStorage.getItem("token") } })
           .then(response => {
             alert('Product added to cart');
           })
@@ -238,7 +238,7 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('cart-list').addEventListener('click', function(event) {
       if (event.target.classList.contains('remove-from-cart')) {
         const prodId = event.target.getAttribute('data-id');
-        axios.post('http://13.236.146.218:5500/shop/cart-delete-item', { productId: prodId } ,{ headers: { "Authorization": localStorage.getItem("token") } })
+        axios.post('http://13.236.146.218:5002/shop/cart-delete-item', { productId: prodId } ,{ headers: { "Authorization": localStorage.getItem("token") } })
           .then(response => {
             alert('Product removed from cart');
           })
@@ -248,7 +248,7 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Handle place order button click
     document.getElementById('place-order').addEventListener('click', function() {
-      axios.post('http://13.236.146.218:5500/shop/create-order', {}, { headers: { "Authorization": localStorage.getItem("token") } })
+      axios.post('http://13.236.146.218:5002/shop/create-order', {}, { headers: { "Authorization": localStorage.getItem("token") } })
         .then(response => {
           alert('Order placed successfully');
           Cart(); // Refresh the cart to show it's empty
