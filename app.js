@@ -48,7 +48,7 @@ Product.belongsToMany(Order, { through: OrderItem });
 
 sequelize.sync({})
 .then(() => {
-    console.log('Listening...');
+    console.log('Listening....');
     app.listen(3000);
 })
 .catch(err => console.log(err))
