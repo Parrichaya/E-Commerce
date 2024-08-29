@@ -49,6 +49,6 @@ Product.belongsToMany(Order, { through: OrderItem });
 sequelize.sync({})
 .then(() => {
     console.log('Listening....');
-    app.listen(3000);
+    app.listen(process.env.PORT || 5500);
 })
 .catch(err => console.log(err))
