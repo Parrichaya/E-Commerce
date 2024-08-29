@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
   const navLinks = document.querySelectorAll('.nav-link');
   navLinks.forEach(link => {
     link.addEventListener('click', function(event) {
-      // event.preventDefault();
+      // event.preventDefault()
       const sectionId = link.getAttribute('data-section');
       showSection(sectionId);
 
