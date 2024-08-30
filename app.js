@@ -3,6 +3,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
+require('dotenv').config();
+
 const sequelize = require('./util/database');
 const Product = require('./models/product');
 const User = require('./models/user');
@@ -10,8 +12,6 @@ const Cart = require('./models/cart');
 const CartItem = require('./models/cart-item');
 const Order = require('./models/order');
 const OrderItem = require('./models/order-item');
-
-require('dotenv').config();
 
 const bodyParser = require('body-parser');
 app.use(bodyParser.json({ extended: true }));
