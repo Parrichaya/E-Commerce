@@ -241,6 +241,7 @@ document.addEventListener('DOMContentLoaded', function() {
         axios.post('http://13.236.146.218:5002/shop/cart-delete-item', { productId: prodId } ,{ headers: { "Authorization": localStorage.getItem("token") } })
           .then(response => {
             alert('Product removed from cart');
+            Cart();
           })
           .catch(error => console.error(error));
         }
