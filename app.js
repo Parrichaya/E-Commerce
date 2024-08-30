@@ -11,6 +11,8 @@ const CartItem = require('./models/cart-item');
 const Order = require('./models/order');
 const OrderItem = require('./models/order-item');
 
+require('dotenv').config();
+
 const bodyParser = require('body-parser');
 app.use(bodyParser.json({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
