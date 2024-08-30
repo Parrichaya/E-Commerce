@@ -3,6 +3,8 @@ const path = require('path');
 const express = require('express');
 const app = express();
 
+require('dotenv').config();
+
 const sequelize = require('./util/database');
 const Product = require('./models/product');
 const User = require('./models/user');
