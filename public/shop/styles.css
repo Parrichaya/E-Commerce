@@ -24,6 +24,6 @@ body {
     color: #ffd700; 
 }
 
-.signout-link {
-    margin-left: auto; /* Pushes the "Sign Out" link to the extreme right */
-}
+/* .signout-link {
+    margin-left: auto; 
+} */
